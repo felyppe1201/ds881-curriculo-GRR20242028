@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Lint and Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Lint HTML
+        run: |
+          npm install -g htmlhint
+          htmlhint "src/**/*.html"
+
+      - name: Validate build
+        run: test -f src/index.html && echo "index.html found" || exit 1
