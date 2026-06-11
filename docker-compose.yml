@@ -1,7 +1,13 @@
 services:
   site:
-    image: nginx:alpine
+    # Constroi a imagem a partir do Dockerfile deste repositorio
+    build: .
     ports:
-      - "8080:80"
+      # Servidor de dev do container (8080) -> localhost:8080
+      - "8080:8080"
     volumes:
-      - ./src:/usr/share/nginx/html:ro
+      # Bind mount: edicoes no host refletem no container e disparam o hot reload
+      - ./src:/app
+    environment:
+      # Forca o watch por polling para o hot reload funcionar em bind mount no Windows
+      - CHOKIDAR_USEPOLLING=true
