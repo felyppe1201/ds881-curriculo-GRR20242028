@@ -111,8 +111,4 @@ comprovam a configuração aplicada no GitHub:
 
 ---
 
-## 👤 Autor
-
-**Felyppe Marcelo da Silva** — GRR20242028
-[LinkedIn](https://www.linkedin.com/in/felyppe-marcelo-silva/)
 
